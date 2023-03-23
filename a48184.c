@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
-#define FILE_MODE (S_IRUSR | S_IWUSR)
+#define FILE_MODE (O_WRONLY | O_CREAT | O_TRUNC | S_IRUSR | S_IWUSR)
 
 void print_output(int start, int end, char *filename)
 {
@@ -25,10 +25,10 @@ void print_output(int start, int end, char *filename)
         {
             perror("Erro ao ler o ficheiro");
             exit(1);
-        } 
+        }
         else
         {
-        printf("%d ", num);
+            printf("%d ", num);
         }
     }
     printf("\n");
